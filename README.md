@@ -1,20 +1,21 @@
-  █▀▀ █   ▄▀█ █ █ █▀▄ █▀▀   █▀▀ █▀█ █▀▀ █▀▀
-  █▄▄ █▄▄ █▀█ █▄█ █▄▀ ██▄   █▀  █▀▄ ██▄ ██▄
+```text
+  █▀▀ █   ▄▀█ █ █ █▀▄ █▀▀ █▀▀ █▀█ █▀▀ █▀▀
+  █▄▄ █▄▄ █▀█ █▄█ █▄▀ ██▄ █▀  █▀▄ ██▄ ██▄
+```
 
-**ClaudeFree** is an automated tool for generating and adding API trial keys to your local Free Claude Code installation with alt accounts.
+# ClaudeFree
 
----
+ClaudeFree is an automated tool for generating and adding API trial keys to a local Free Claude Code (FCC) installation using alternate accounts.
 
 ## Features
 
-| Feature                       | Description                                                               |
-| ----------------------------- | ------------------------------------------------------------------------- |
-| **Browser automation**        | Uses Playwright and ChromeDriver for browser interaction.                 |
-| **Email management**          | Reads configured email information from `assets.txt`.                     |
+| Feature | Description |
+| --- | --- |
+| **Browser automation** | Uses Playwright and ChromeDriver for browser interaction. |
+| **Email management** | Reads configured email information from `assets.txt`. |
 | **Gmail verification bridge** | Receives verification codes through a local HTTP server and Tampermonkey. |
-| **API key management**        | Saves API keys locally in `keys.txt`.                                     |
-| **Provider integration**      | Adds keys to the existing trial provider in Free Claude Code (FCC).       |
-| **AI generated readme**       | How do you right a readme without spelling errors i was last in spelling bee. |
+| **API key management** | Saves API keys locally in `keys.txt`. |
+| **Provider integration** | Adds keys to the existing trial provider in Free Claude Code (FCC). |
 
 ## Requirements
 
@@ -32,50 +33,43 @@
 
 ### 1. Download the project
 
-Clone the repository or download its source files.
-
-Open PowerShell in the project directory.
+Clone the repository or download its source files, then open PowerShell in the project directory.
 
 ### 2. Configure `assets.txt`
 
-Create or open `assets.txt` in the project folder.
+Create or open `assets.txt` in the project folder. This file stores the local configuration used by ClaudeFree.
 
-This file stores the local configuration used by the program.
-- we reccomend creating a long email if yours is shorter then 9 charecters
-- enter your email in the assets.txt file
-- enter your Nonecap API key in assets.txt
-- you can generate infinite accounts but limited at 10 / ip / hour.
+- Use a Gmail address (longer aliases work better if your base address is short).
+- Enter your email in `assets.txt`.
+- Enter your Nonecap API key in `assets.txt` as `nonecap=` or `nonecapapi=`.
+- Account generation is limited (typically 10 per IP per hour).
 
 ### 3. Set up Tampermonkey
 
 1. Install the Tampermonkey extension from the official browser extension store.
 2. Open the Tampermonkey dashboard.
 3. Select **Create a new script**.
-4. Paste the project's Gmail bridge userscript into the editor.
+4. Paste the project's Gmail bridge userscript from `tampermonkey.user.js` into the editor.
 5. Save the script.
 6. Open Gmail in Chrome.
-7. hit ctrl+shift+r if the script dosent load initially (it has a UI)
-8. keep this tab running in the background.
+7. If the script does not load initially, press `Ctrl+Shift+R` (hard refresh).
+8. Keep this Gmail tab running in the background.
 
-The userscript communicates with the local verification bridge. Only install scripts you trust, and review their permissions before enabling them.
+The userscript communicates with the local verification bridge. Only install scripts you trust and review their permissions before enabling them.
 
 ### 4. Configure NoneCap
 
-How to get a nonecap trial key
-
-1. Open the official NoneCap at https://nonecap.com .
-2. Create an account with https://tempmailg.com as your email address.
-3. Complete the account setup.
-4. Generate an API key through your account dashboard.
-5. Enter it in assets.txt as nonecap= OR nonecapapi=
-
+1. Open https://nonecap.com.
+2. Create an account.
+3. Complete account setup.
+4. Generate an API key from your dashboard.
+5. Add it to `assets.txt`.
 
 ### 5. Start Free Claude Code (FCC)
 
-Make sure Free Claude Code is running locally and that its admin panel is accessible.
-- If it is not installed, ClaudeFree will guide you through the install steps.
+Make sure Free Claude Code is running locally and that its admin panel is accessible. If it is not installed, ClaudeFree can guide you through the install/start steps.
 
-Default address:
+Default admin address:
 
 ```text
 http://localhost:8082/admin
@@ -87,26 +81,25 @@ http://localhost:8082/admin
 python api-gen-headless.py
 ```
 
-ClaudeFree checks its dependencies, starts its local services, and opens the FCC admin panel.
+ClaudeFree checks dependencies, starts local services, and opens the FCC admin panel.
 
 ## Local Files
 
-| File / Folder            | Description                  |
-| ------------------------ | ---------------------------- |
-| `api-gen-headless.py`    | ClaudeFree headless runner   |
-| `api-gen-headful-old.py` | Legacy headed runner         |
-| `assets.txt`             | Local configuration          |
-| `keys.txt`               | Locally stored API keys      |
-| `accounts.txt`           | Recent account history       |
-| `drivers/`               | Browser driver files         |
+| File / Folder | Description |
+| --- | --- |
+| `api-gen-headless.py` | ClaudeFree headless runner |
+| `api-gen-headful-old.py` | Legacy headed runner |
+| `assets.txt` | Local configuration |
+| `keys.txt` | Locally stored API keys |
+| `accounts.txt` | Recent account history |
+| `drivers/` | Browser driver files |
 
 ## Ports
 
-| Port   | Purpose                              |
-| ------ | ------------------------------------ |
-| `8080` | Local Gmail verification bridge      |
-| `8082` | Free Claude Code (FCC) admin panel   |
-
+| Port | Purpose |
+| --- | --- |
+| `8080` | Local Gmail verification bridge |
+| `8082` | Free Claude Code (FCC) admin panel |
 
 ## Credits
 
