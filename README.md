@@ -107,3 +107,7 @@ ClaudeFree checks dependencies, starts local services, and opens the FCC admin p
 - **Playwright** — Browser automation
 - **Tampermonkey** — Browser userscript support
 - **Free Claude Code** — Local application integration target
+
+## Support
+
+For help or issues, contact **in_d7fferent** on Discord.
